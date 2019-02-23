@@ -1,0 +1,14 @@
+#ignore file file.ext or symlink
+.env
+.DS_Store
+git
+package-lock.json
+homework-instructions.md
+
+#ignore all files with .ext extension
+#.ext
+#but !NOT this specific .extfile
+#!important.ext
+
+#ignore folder
+node_modules/
