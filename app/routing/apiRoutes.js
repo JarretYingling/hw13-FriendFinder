@@ -1,19 +1,18 @@
 "use strict";
 
-// path
-const path = require("path");
 // friends
-const friendsArray = require("../data/friends.js").friendsArray;
+var friendsArray = require("../data/friends.js").friendsArray;
 
 module.exports = function (app) {
     app.get("/api/friends", function(req, res){
         console.log(req.url);
-        res.json(friendsArray);
+        res.json(`get: ${friendsArray}`);
     });
     app.post("/api/friends", function (req, res) {
-        console.log(`req.body: ${req.body}`);
-        friendsArray.push(req.body);
+        // google express post req spec
+        console.log(`req.url: ${req.url}`);
+        //friendsArray.push(req);
         res.json(friendsArray);
-        console.log(friendsArray);
+        console.log(`JSON.stringify(friendsArray): ${JSON.stringify(friendsArray)}`);
     });
 }

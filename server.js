@@ -14,7 +14,7 @@ require("./app/routing/htmlRoutes.js")(app);
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.use("/", express.static(__dirname + "/"));
+//app.use("/", express.static(__dirname + "/"));
 
 // express listener
 const PORT = 8080;
