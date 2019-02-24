@@ -3,7 +3,8 @@
 var friendsArray = [];
 
 
-let leastDelta = 0;
+let leastDelta = 40;
+let bestFriend = 0;
 
 const compareFriends = (newScores) => {
     if (friendsArray.length > 0) {
@@ -14,12 +15,20 @@ const compareFriends = (newScores) => {
             let friendScores = friendValue.scores;
             //console.log(friendScores);
             let delta = 0;
-            friendScores.forEach(function(scoreValue, scoreIndex){
-                delta += Math.sqrt(Math.pow(parseInt(scoreValue) - parseInt(newScores[scoreIndex])));
+            friendScores.forEach(function (scoreValue, scoreIndex) {
+                console.log(`scoreValue: ${typeof parseInt(scoreValue)} newScores[i]: ${typeof parseInt(newScores[scoreIndex])}`)
+                console.log(`typeof delta ${typeof delta}`);
+                delta = delta + Math.sqrt(Math.pow(parseInt(scoreValue) - parseInt(newScores[scoreIndex]),2));
+                console.log(`typeof delta ${typeof delta}`);
+                console.log(`friend ${friendIndex} score ${scoreIndex} total delta ${delta}`)
             });
+            if (delta <= leastDelta) {
+                leastDelta = delta;
+                bestFriend = friendIndex;
+            }
         });
-        return 1;
-        //console.log(friendsArray);
+        console.log(`leastDelta = ${leastDelta} and bestFriend = ${bestFriend}`)
+        return bestFriend;
     }
     return 0;
 }
