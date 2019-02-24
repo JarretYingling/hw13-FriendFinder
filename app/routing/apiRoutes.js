@@ -8,16 +8,17 @@ const compareFriends = require("../data/friends.js").compareFriends;
 
 module.exports = function (app) {
     app.get("/api/friends", function (req, res) {
-        console.log(`req.body:\n${req.body}\n`);
+        if (error) {
+            res.status(500).send("server error");
+        }
         res.json(`get:\n${friendsArray}\n`);
     });
     app.post("/api/friends", function (req, res) {
-        //console.log(`req.body:\n${JSON.stringify(req.body)}\n`); // removed stringify
-        //console.log(req.body);
+        if (error) {
+            res.status(500).send("server error");
+        }
         let match = compareFriends(req.body.scores);
         friendsArray.push(req.body);
-        //res.json(friendsArray[0]);
         res.json(friendsArray[match]);
-        //console.log(friendsArray);
     });
 }

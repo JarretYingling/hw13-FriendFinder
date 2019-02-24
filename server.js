@@ -1,20 +1,17 @@
 "use strict";
-const log = console.log;
 
 // friends
 const friendsArray = require("./app/data/friends.js").friendsArray;
 
-// body-parser
-// const bodyParser = require("body-parser");
-
 // express
 const express = require("express");
 const app = express();
+var PORT = process.env.PORT || 8080;
 
 // express data parsing
-// app.use(bodyParser.urlencoded({extended: false}));
-// app.use(bodyParser.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(express.json());
 
 // routes
@@ -24,5 +21,6 @@ require("./app/routing/htmlRoutes.js")(app);
 //app.use("/", express.static(__dirname + "/"));
 
 // express listener
-const PORT = 8080;
-app.listen(PORT, () => {log(`express listening on port: ${PORT}`)});
+app.listen(PORT, () => {
+    console.log(`express app listening on port: ${PORT}`)
+});
